@@ -21,6 +21,7 @@ import RateProduct from "../customer/Components/ReviewProduct/RateProduct";
 import Profile from "../customer/Components/Profile/Profile";
 import NotFound from "../Pages/Notfound";
 import Forget from "../customer/Components/Auth/Forget";
+import SuccessPage from "../customer/Components/SuccessPage/SuccessPage";
 
 const CustomerRoutes = () => {
   const location = useLocation();
@@ -35,7 +36,8 @@ const CustomerRoutes = () => {
         {showNavigation && <Navigation />}
         <div className="code ">
           <Routes>
-            <Route path="/login" element={<Homepage />}></Route>
+            <Route path="/login" element={<Homepage/>}></Route>
+          <Route path = "/sucess" element={<SuccessPage/>}></Route>
             <Route path="/register" element={<Homepage />}></Route>
             <Route path="/forget" element={<Homepage />}></Route>
 

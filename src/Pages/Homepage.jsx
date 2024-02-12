@@ -30,7 +30,7 @@ const Homepage = () => {
         }
 
         setProducts(allProducts);
-        console.log(allProducts);
+  
         const menShoes = allProducts.filter(
           (product) => product.category.name === "Shoes"
         );

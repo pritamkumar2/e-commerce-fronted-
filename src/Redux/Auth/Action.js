@@ -19,7 +19,8 @@ import {
   LOGOUT,
 } from "./ActionTypes";
 import api, { API_BASE_URL } from "../../config/api";
-
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 // Register action creators
 const registerRequest = () => ({ type: REGISTER_REQUEST });
 const registerSuccess = (user) => ({ type: REGISTER_SUCCESS, payload: user });
@@ -30,9 +31,17 @@ export const register = (userData) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/auth/signup`, userData);
     const user = response.data;
-    if (user.jwt) localStorage.setItem("jwt", user.jwt);
-    console.log("registerr :", user);
-    dispatch(registerSuccess(user));
+
+    // Check if the user is verified
+    if (user.isVerified) {
+      // Store JWT token in localStorage
+      if (user.jwt) localStorage.setItem("jwt", user.jwt);
+
+      dispatch(registerSuccess(user));
+    } else {
+      console.log("User is not verified");
+      // Handle case where user is not verified
+    }
   } catch (error) {
     dispatch(registerFailure(error.message));
   }

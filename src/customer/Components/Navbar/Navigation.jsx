@@ -110,6 +110,8 @@ export default function Navigation() {
     }
   };
 
+
+  // //////////////////////////////////
   const products = allProducts;
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchQuery.toLowerCase())
