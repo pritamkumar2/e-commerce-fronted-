@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11,47 +11,39 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-
 #bgneed {
-  background-color: #FA8BFF;
-  background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
-
+  background-color: #fa8bff;
+  background-image: linear-gradient(
+    45deg,
+    #fa8bff 0%,
+    #2bd2ff 52%,
+    #2bff88 90%
+  );
 }
 
 #notfound {
   color: black;
-  background-image:  linear-gradient(#B4B4B8,
-  #C7C8CC,
-  #E3E1D9,
-  #F2EFE5);
-  border-radius:  2%;
+  background-image: linear-gradient(#b4b4b8, #c7c8cc, #e3e1d9, #f2efe5);
+  border-radius: 2%;
 
   height: 90vh;
 }
 
-
-
-#notfound h2{
+#notfound h2 {
   text-align: center;
   font-size: 80px;
-  background: linear-gradient(to left,
-  #12372A,
-#436850,
-#ADBC9F,
-#132e12);
+  background: linear-gradient(to left, #12372a, #436850, #adbc9f, #132e12);
   -webkit-background-clip: text;
   color: transparent;
-
 }
 
-#notfound a{
+#notfound a {
   color: blue;
 }
-
 
 .code {
   margin-top: 7%; /* Default margin-top value for PC */
@@ -64,7 +56,7 @@ code {
 }
 
 .scroller-thin::-webkit-scrollbar {
-  width: 2px; 
+  width: 2px;
 }
 
 /* Track */
@@ -77,14 +69,72 @@ code {
   background: #888; /* Optional: Change the handle color */
 }
 
-
 .scroller-hidden::-webkit-scrollbar {
   display: none;
 }
 
+.CompanyPage {
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+}
 
+.CompanyPage-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
 
+.CompanyPage-info {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
 
+.CompanyPage-about,
+.CompanyPage-team {
+  width: 45%;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.CompanyPage-team {
+  display: flex;
+  flex-direction: column;
+}
+
+.CompanyPage-member {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.CompanyPage-member-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.CompanyPage-footer {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #282c34;
+  color: white;
+}
+.auth {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; /* Adjusted width for mobile view */
+  max-width: 500px; /* Maximum width to maintain readability */
+  background-color: #ffffff; /* Background color */
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.25); /* Box shadow */
+  padding: 16px; /* Padding */
+}
 
 @tailwind base;
 @tailwind components;

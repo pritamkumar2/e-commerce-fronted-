@@ -11,7 +11,7 @@ const HomeProductSection = ({ section, data }) => {
 
   const responsive = {
     0: {
-      items: 2,
+      items: 1.6,
       itemsFit: "contain",
     },
     720: {
@@ -44,7 +44,7 @@ const HomeProductSection = ({ section, data }) => {
     .map((item, index) => <HomeProductCard key={index} product={item} />);
 
   return (
-    <div className="relative px-4 sm:px-6 lg:px-8 ">
+    <div className="relative px-2  sm:px-6 lg:px-8 ">
       <h2 className="text-2xl text-start  font-bold text-gray-800 py-5">
         {section}
       </h2>

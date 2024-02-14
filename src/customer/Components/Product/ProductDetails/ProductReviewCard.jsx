@@ -1,28 +1,26 @@
 import React from "react";
 import { Avatar } from "@mui/material";
-import { Rating, Box, Typography, Grid } from "@mui/material";
-import axios from "axios";
+import { Rating, Box, Grid } from "@mui/material";
 
 const ProductReviewCard = ({ item }) => {
   const [value, setValue] = React.useState(4.5);
+
   return (
-    <div className="">
-      <Grid container spacing={2} gap={3}>
-        <Grid item xs={1}>
-          <Box>
-            <Avatar
-              className="text-white"
-              sx={{ width: 56, height: 56, bgcolor: "#9155FD" }}
-              alt={item?.user?.firstName}
-              src=""
-            >
-              {item?.user?.firstName[0].toUpperCase()}
-            </Avatar>
-          </Box>
+    <div className="p-4 border-b border-gray-200">
+      <Grid container spacing={2}>
+        <Grid item xs={3} sm={2}>
+          <Avatar
+            className="text-white"
+            sx={{ width: 40, height: 40, bgcolor: "#9155FD" }}
+            alt={item?.user?.firstName}
+            src=""
+          >
+            {item?.user?.firstName[0].toUpperCase()}
+          </Avatar>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={9} sm={10}>
           <div className="space-y-2">
-            <div className="">
+            <div>
               <p className="font-semibold text-lg">{item.user?.firstName}</p>
               <p className="opacity-70">April 5, 2023</p>
             </div>
@@ -41,7 +39,6 @@ const ProductReviewCard = ({ item }) => {
           </div>
         </Grid>
       </Grid>
-      <div className="col-span-1 flex"></div>
     </div>
   );
 };

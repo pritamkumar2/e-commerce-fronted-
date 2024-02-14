@@ -466,159 +466,73 @@ export default function ProductDetails() {
         </section>
 
         {/* rating and review section */}
-        <section className="">
+        <section className="pt-10">
           <h1 className="font-semibold text-lg pb-4">
             Recent Review & Ratings
           </h1>
 
           <div className="border p-5">
             <Grid container spacing={7}>
-              <Grid item xs={7}>
+              <Grid item xs={12} sm={7}>
                 <div className="space-y-5">
                   {review.reviews?.map((item, i) => (
-                    <ProductReviewCard item={item} />
+                    <ProductReviewCard key={i} item={item} />
                   ))}
                 </div>
               </Grid>
 
-              <Grid item xs={5}>
+              <Grid item xs={12} sm={5}>
                 <h1 className="text-xl font-semibold pb-1">Product Ratings</h1>
                 <div className="flex items-center space-x-3 pb-10">
-                  <Rating
-                    name="read-only"
-                    value={4.6}
-                    precision={0.5}
-                    readOnly
-                  />
-
-                  <p className="opacity-60">42807 Ratings</p>
+                  <div className="flex items-center">
+                    <Rating
+                      name="read-only"
+                      value={4.6}
+                      precision={0.5}
+                      readOnly
+                    />
+                    <p className="opacity-60 ml-2">42807 Ratings</p>
+                  </div>
                 </div>
+
+                {/* Rating Categories */}
                 <Box>
-                  <Grid
-                    container
-                    justifyContent="center"
-                    alignItems="center"
-                    gap={2}
-                  >
-                    <Grid xs={2}>
-                      <p className="p-0">Excellent</p>
+                  {[
+                    { label: "Excellent", value: 40, color: "success" },
+                    { label: "Very Good", value: 30, color: "success" },
+                    { label: "Good", value: 25, color: "orange" },
+                    { label: "Average", value: 21, color: "success" },
+                    { label: "Poor", value: 10, color: "error" },
+                  ].map((category, index) => (
+                    <Grid
+                      key={index}
+                      container
+                      justifyContent="center"
+                      alignItems="center"
+                      gap={2}
+                    >
+                      <Grid xs={2}>
+                        <p className="p-0">{category.label}</p>
+                      </Grid>
+                      <Grid xs={7}>
+                        <LinearProgress
+                          sx={{
+                            bgcolor: "#d0d0d0",
+                            borderRadius: 4,
+                            height: 7,
+                            "& .MuiLinearProgress-bar": {
+                              bgcolor: category.color,
+                            },
+                          }}
+                          variant="determinate"
+                          value={category.value}
+                        />
+                      </Grid>
+                      <Grid xs={2}>
+                        <p className="opacity-50 p-2">19259</p>
+                      </Grid>
                     </Grid>
-                    <Grid xs={7}>
-                      <LinearProgress
-                        className=""
-                        sx={{ bgcolor: "#d0d0d0", borderRadius: 4, height: 7 }}
-                        variant="determinate"
-                        value={40}
-                        color="success"
-                      />
-                    </Grid>
-                    <Grid xs={2}>
-                      <p className="opacity-50 p-2">19259</p>
-                    </Grid>
-                  </Grid>
-                </Box>
-                <Box>
-                  <Grid
-                    container
-                    justifyContent="center"
-                    alignItems="center"
-                    gap={2}
-                  >
-                    <Grid xs={2}>
-                      <p className="p-0">Very Good</p>
-                    </Grid>
-                    <Grid xs={7}>
-                      <LinearProgress
-                        className=""
-                        sx={{ bgcolor: "#d0d0d0", borderRadius: 4, height: 7 }}
-                        variant="determinate"
-                        value={30}
-                        color="success"
-                      />
-                    </Grid>
-                    <Grid xs={2}>
-                      <p className="opacity-50 p-2">19259</p>
-                    </Grid>
-                  </Grid>
-                </Box>
-                <Box>
-                  <Grid
-                    container
-                    justifyContent="center"
-                    alignItems="center"
-                    gap={2}
-                  >
-                    <Grid xs={2}>
-                      <p className="p-0">Good</p>
-                    </Grid>
-                    <Grid xs={7}>
-                      <LinearProgress
-                        className="bg-[#885c0a]"
-                        sx={{ bgcolor: "#d0d0d0", borderRadius: 4, height: 7 }}
-                        variant="determinate"
-                        value={25}
-                        color="orange"
-                      />
-                    </Grid>
-                    <Grid xs={2}>
-                      <p className="opacity-50 p-2">19259</p>
-                    </Grid>
-                  </Grid>
-                </Box>
-                <Box>
-                  <Grid
-                    container
-                    justifyContent="center"
-                    alignItems="center"
-                    gap={2}
-                  >
-                    <Grid xs={2}>
-                      <p className="p-0">Avarage</p>
-                    </Grid>
-                    <Grid xs={7}>
-                      <LinearProgress
-                        className=""
-                        sx={{
-                          bgcolor: "#d0d0d0",
-                          borderRadius: 4,
-                          height: 7,
-                          "& .MuiLinearProgress-bar": {
-                            bgcolor: "#885c0a", // stroke color
-                          },
-                        }}
-                        variant="determinate"
-                        value={21}
-                        color="success"
-                      />
-                    </Grid>
-                    <Grid xs={2}>
-                      <p className="opacity-50 p-2">19259</p>
-                    </Grid>
-                  </Grid>
-                </Box>
-                <Box>
-                  <Grid
-                    container
-                    justifyContent="center"
-                    alignItems="center"
-                    gap={2}
-                  >
-                    <Grid xs={2}>
-                      <p className="p-0">Poor</p>
-                    </Grid>
-                    <Grid xs={7}>
-                      <LinearProgress
-                        className=""
-                        sx={{ bgcolor: "#d0d0d0", borderRadius: 4, height: 7 }}
-                        variant="determinate"
-                        value={10}
-                        color="error"
-                      />
-                    </Grid>
-                    <Grid xs={2}>
-                      <p className="opacity-50 p-2">19259</p>
-                    </Grid>
-                  </Grid>
+                  ))}
                 </Box>
               </Grid>
             </Grid>
@@ -626,13 +540,13 @@ export default function ProductDetails() {
         </section>
 
         {/* similer product */}
-        <section className=" pt-10  justify-center items-center flex-col flex">
-          <h1 className="py-5 item-start w-full font-serif text-3xl text-xl font-bold">
-            Similer Products
+        <section className="pt-10 justify-center items-center flex-col flex">
+          <h1 className="py-5 w-full font-serif text-3xl font-bold">
+            Similar Products
           </h1>
-          <div className="flex flex-wrap space-y-5">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {similer.map((item) => (
-              <HomeProductCard product={item} />
+              <HomeProductCard key={item.id} product={item} />
             ))}
           </div>
         </section>

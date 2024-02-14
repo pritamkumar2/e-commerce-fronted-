@@ -6,7 +6,7 @@ export const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          href: "",
+          href: "/newArrival",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
           imageAlt:
@@ -29,31 +29,44 @@ export const navigation = {
             {
               name: "Tops",
               id: "top",
-              href: `{women/clothing/tops}`,
+              href: `women/clothing/top?category=top`,
             },
-            { name: "Dresses", id: "women_dress", href: "#" },
-            { name: "Women Jeans", id: "women_jeans" },
-            { name: "T-Shirts", id: "t-shirts" },
+            {
+              name: "Dresses",
+              id: "women_dress",
+              href: "women/clothing/dresses?category=dresses",
+            },
+            {
+              name: "Women Jeans",
+              id: "women_jeans",
+              href: "women/clothing/women-jeans?category=women-jeans",
+            },
+            {
+              name: "T-Shirts",
+              id: "t-shirts",
+              href: "women/clothing/t-shirts?category=t-shirts",
+            },
           ],
         },
         {
           id: "accessories",
           name: "Accessories",
           items: [
-            { name: "Watches", id: "Watch" },
-            { name: "Bags", id: "bag" },
-            { name: "Sunglasses", id: "sunglasse" },
-          ],
-        },
-        {
-          id: "brands",
-          name: "Brands",
-          items: [
-            { name: "Full Nelson", id: "#" },
-            { name: "My Way", id: "#" },
-            { name: "Re-Arranged", id: "#" },
-            { name: "Counterfeit", id: "#" },
-            { name: "Significant Other", id: "product" },
+            {
+              name: "Watches",
+              id: "Watch",
+              href: "women/accessories/Watches?category=Watch",
+            },
+            {
+              name: "Bags",
+              id: "bag",
+              href: "women/accessories/bag?category=bag",
+            },
+            {
+              name: "Sunglasses",
+              id: "sunglasse",
+              href: "women/accessories/sunglasse?category=sunglasse",
+            },
           ],
         },
       ],
@@ -84,13 +97,41 @@ export const navigation = {
           id: "clothing",
           name: "Clothing",
           items: [
-            { name: "Mens Kurtas", id: "mens_kurta" },
-            { name: "Shirt", id: "shirt" },
-            { name: "Men Jeans", id: "men_jeans" },
-            { name: "Sweaters", id: "#" },
-            { name: "T-Shirts", id: "t-shirts" },
-            { name: "Jackets", id: "#" },
-            { name: "Activewear", id: "#" },
+            {
+              name: "Mens Kurtas",
+              id: "mens_kurta",
+              href: "men/clothing/Mens-Kurtas?category=Mens-Kurtas",
+            },
+            {
+              name: "Shirt",
+              id: "shirt",
+              href: "men/clothing/Shirt?category=Shirt",
+            },
+            {
+              name: "Men Jeans",
+              id: "men_jeans",
+              href: "men/clothing/men-jeans?category=men-jeans",
+            },
+            {
+              name: "Sweaters",
+              id: "#",
+              href: "men/clothing/Sweaters?category=Sweaters",
+            },
+            {
+              name: "T-Shirts",
+              id: "t-shirts",
+              href: "men/clothing/t-shirts?category=t-shirts",
+            },
+            {
+              name: "Jackets",
+              id: "jackets",
+              href: "men/clothing/jackets?category=jackets",
+            },
+            {
+              name: "Activewear",
+              id: "activewear",
+              href: "men/clothing/activewear?category=activewear",
+            },
           ],
         },
         {
@@ -100,29 +141,37 @@ export const navigation = {
             {
               name: "Watches",
               id: "Watch",
+              href: "men/accessories/Watch?category=Watch",
             },
-            { name: "Wallets", id: "#" },
-            { name: "Bags", id: "#" },
-            { name: "Sunglasses", id: "#" },
-            { name: "Hats", id: "#" },
-            { name: "Belts", id: "#" },
-          ],
-        },
-        {
-          id: "brands",
-          name: "Brands",
-          items: [
-            { name: "Re-Arranged", id: "#" },
-            { name: "Counterfeit", id: "#" },
-            { name: "Full Nelson", id: "#" },
-            { name: "My Way", id: "#" },
+            {
+              name: "Wallets",
+              id: "#",
+              href: "men/accessories/Wallets?category=wallets",
+            },
+            {
+              name: "Bags",
+              id: "#",
+              href: "men/accessories/bags?category=bags",
+            },
+            {
+              name: "Sunglasses",
+              id: "#",
+              href: "men/accessories/sunglasse?category=sunglasse",
+            },
+            {
+              name: "Hats",
+              id: "#",
+              href: "men/accessories/hats?category=hats",
+            },
+            {
+              name: "Belts",
+              id: "#",
+              href: "men/accessories/belts?category=belts",
+            },
           ],
         },
       ],
     },
   ],
-  pages: [
-    { name: "Company", id: "/" },
-    { name: "Stores", id: "/" },
-  ],
+  pages: [{ name: "Company", id: "/", href: "/company" }],
 };

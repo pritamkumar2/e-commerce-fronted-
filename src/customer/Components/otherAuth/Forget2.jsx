@@ -8,7 +8,7 @@ import {
   verifyOTPAndUpdatePassword,
 } from "../../../Redux/Auth/Action";
 
-export default function Forget() {
+export default function Forget2() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");

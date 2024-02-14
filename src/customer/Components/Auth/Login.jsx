@@ -34,9 +34,9 @@ export default function LoginUserForm({ handleNext }) {
   };
 
   return (
-    <React.Fragment className=" shadow-lg ">
-      <form className="w-full ">
-        <div container spacing={3}>
+    <React.Fragment className=" auth shadow-lg ">
+           <form className="w-full ">
+        <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField
               required
@@ -51,13 +51,13 @@ export default function LoginUserForm({ handleNext }) {
           </Grid>
 
           {!otpSent ? (
-            <div className=" my-2">
+            <div className="auth  my-2">
               <Button
                 className="bg-[#9155FD]  w-full"
                 type="button"
                 variant="contained"
                 size="large"
-                sx={{ padding: ".8rem 0" }}
+                sx={{ padding: ".8rem 0", width: "100%" }}
                 onClick={handleGenerateOTP}
               >
                 Get OTP
@@ -102,14 +102,14 @@ export default function LoginUserForm({ handleNext }) {
                 type="button"
                 variant="contained"
                 size="large"
-                sx={{ padding: ".8rem 0" }}
+                sx={{ padding: ".8rem 0", width: "100%" }}
                 onClick={handleLogin}
               >
                 Login
               </Button>
             </div>
           )}
-        </div>
+        </Grid>
       </form>
       <div className="flex justify-center flex-col items-center">
         <div className="py-3 flex items-center">

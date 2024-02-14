@@ -39,7 +39,7 @@ export default function Forget() {
 
   return (
     <React.Fragment>
-      <form className="w-full" onSubmit={handleEmailSubmit}>
+          <form className="w-full" onSubmit={handleEmailSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField
@@ -58,13 +58,55 @@ export default function Forget() {
               type="submit"
               variant="contained"
               size="large"
-              sx={{ padding: ".8rem 0" }}
+              sx={{ padding: ".8rem 0", width: "100%" }}
             >
               Send OTP
             </Button>
           </Grid>
         </Grid>
       </form>
+
+      {otpSent && (
+        <form className="w-full" onSubmit={handleOTPSubmit}>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <TextField
+                required
+                id="otp"
+                name="otp"
+                label="Enter OTP"
+                fullWidth
+                autoComplete="off"
+                value={otp}
+                onChange={(e) => setOTP(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                id="newPassword"
+                name="newPassword"
+                label="New Password"
+                type="password"
+                fullWidth
+                autoComplete="off"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                sx={{ padding: ".8rem 0", width: "100%" }}
+              >
+                Update Password
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
+      )}
 
       {otpSent && ( // Display OTP input form only after OTP is sent
         <form className="w-full" onSubmit={handleOTPSubmit}>

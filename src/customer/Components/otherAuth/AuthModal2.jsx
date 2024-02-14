@@ -20,7 +20,7 @@ const style = {
   p: 4,
 };
 
-export default function AuthModal({ handleClose, open }) {
+export default function AuthModal2({ handleClose, open }) {
   const location = useLocation();
   const { auth } = useSelector((store) => store);
   const navigate = useNavigate();

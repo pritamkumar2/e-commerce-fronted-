@@ -20,8 +20,9 @@ import PaymentSuccess from "../customer/Components/paymentSuccess/PaymentSuccess
 import RateProduct from "../customer/Components/ReviewProduct/RateProduct";
 import Profile from "../customer/Components/Profile/Profile";
 import NotFound from "../Pages/Notfound";
-import Forget from "../customer/Components/Auth/Forget";
+
 import SuccessPage from "../customer/Components/SuccessPage/SuccessPage";
+import CompanyPage from "../Pages/Company";
 
 const CustomerRoutes = () => {
   const location = useLocation();
@@ -45,7 +46,7 @@ const CustomerRoutes = () => {
             <Route path="/home" element={<Homepage />}></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
-
+            <Route path="/company" element={<CompanyPage />}></Route>
             <Route path="/privaciy-policy" element={<PrivacyPolicy />}></Route>
             <Route
               path="/terms-condition"

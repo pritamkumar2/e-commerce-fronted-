@@ -46,6 +46,7 @@ export default function AuthModal({ handleClose, open }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         size="large"
+       
       >
         <Box className="rounded-md" sx={style}>
           {location.pathname === "/login" ? (

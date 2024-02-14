@@ -38,7 +38,7 @@ export default function RegisterUserForm({ handleNext }) {
   };
 
   return (
-    <div className="">
+    <div className="auth">
       <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
