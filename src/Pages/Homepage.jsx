@@ -18,13 +18,13 @@ const Homepage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let response = await axios.get("http://localhost:5454/api/products");
+        let response = await axios.get("https://e-commerce-bakend.onrender.com/api/products");
         let allProducts = response.data.content;
         const totalPages = response.data.totalPages;
 
         for (let page = 2; page <= totalPages; page++) {
           response = await axios.get(
-            `http://localhost:5454/api/products?pageNumber=${page}`
+            `https://e-commerce-bakend.onrender.com/api/products?pageNumber=${page}`
           );
           allProducts = allProducts.concat(response.data.content);
         }

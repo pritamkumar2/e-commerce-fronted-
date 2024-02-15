@@ -40,7 +40,7 @@ export const singleFilter = [
   },
   {
     id: "category",
-    name: "Third Level Category",
+    name: "Search Category",
     options: [
       { value: "t-shirts", label: "T-Shirts" },
       { value: "Watch", label: "Watch" },

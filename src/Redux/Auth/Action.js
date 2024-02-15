@@ -157,6 +157,7 @@ export const sendOTP = (email) => async (dispatch) => {
   dispatch(sendOTPRequest());
   try {
     await axios.post(`${API_BASE_URL}/auth/forgot-password`, { email });
+    console.log("the auth token",API_BASE_URL)
     dispatch(sendOTPSuccess());
   } catch (error) {
     dispatch(sendOTPFailure(error.message));

@@ -133,7 +133,7 @@ export default function ProductDetails() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5454/api/products");
+        const response = await axios.get("https://e-commerce-bakend.onrender.com/api/products");
 
         setData(response.data.content);
       } catch (error) {
