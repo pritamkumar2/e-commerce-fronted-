@@ -6,7 +6,7 @@ const Footer = () => {
       <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
-            <a href="https://flowbite.com/" class="flex items-center">
+            <div class="flex items-center">
               <img
                 src="https://imgs.search.brave.com/cB2oJy2dnCKyOFEwcQYWsVkirsGkmCNlAgREITtdMz4/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9wbmdm/cmUuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy9zaGl2YS00LTQ0/NHgxMDI0LnBuZw"
                 class="h-12 me-3"
@@ -15,7 +15,7 @@ const Footer = () => {
               <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 E-COMMERCE STORE
               </span>
-            </a>
+            </div>
           </div>
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>

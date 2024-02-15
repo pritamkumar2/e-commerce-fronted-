@@ -31,9 +31,9 @@ export default function LoginUserForm({ handleNext }) {
 
   return (
     <React.Fragment>
-      <form className="w-full">
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
+      <form className="w-full mobileSizeForm">
+        <Grid container spacing={2} justifyContent="center" alignItems="center">
+          <Grid item xs={9}>
             <TextField
               required
               id="email"
@@ -48,7 +48,7 @@ export default function LoginUserForm({ handleNext }) {
           </Grid>
 
           {!otpSent ? (
-            <Grid item xs={12}>
+            <Grid item xs={9}>
               <Button
                 className="bg-[#9155FD] w-full"
                 type="button"
@@ -123,18 +123,19 @@ export default function LoginUserForm({ handleNext }) {
       </div>
 
       
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+    
     </React.Fragment>
   );
 }
+<ToastContainer
+position="top-right"
+autoClose={3000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>

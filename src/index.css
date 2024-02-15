@@ -13,6 +13,9 @@ body {
 }
 html{
   scroll-behavior: smooth;
+  background: linear-gradient(300deg, #979595, #ffffff, #eae498);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
 }
 /* gredints */
 .gradient-background {

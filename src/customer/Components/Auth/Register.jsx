@@ -34,20 +34,16 @@ export default function RegisterUserForm({ handleNext }) {
       email: data.get("email"),
       password: data.get("password"),
     };
-  
+
     dispatch(register(userData));
   };
 
-  const handleRegistration = () => {
-    
- 
-  
-  };
+  const handleRegistration = () => {};
   return (
-    <div className="auth">
+    <div className="w-full">
       <form onSubmit={handleSubmit}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
+        <Grid container spacing={3} justifyContent="center" alignItems="center">
+          <Grid item xs={9} >
             <TextField
               required
               id="firstName"
@@ -57,7 +53,7 @@ export default function RegisterUserForm({ handleNext }) {
               autoComplete="given-name"
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={9} >
             <TextField
               required
               id="lastName"
@@ -67,7 +63,7 @@ export default function RegisterUserForm({ handleNext }) {
               autoComplete="given-name"
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={9}>
             <TextField
               required
               id="email"
@@ -77,7 +73,7 @@ export default function RegisterUserForm({ handleNext }) {
               autoComplete="given-name"
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={9}>
             <TextField
               required
               id="password"
@@ -89,7 +85,7 @@ export default function RegisterUserForm({ handleNext }) {
             />
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={9}>
             <Button
               className="bg-[#9155FD] w-full"
               type="submit"

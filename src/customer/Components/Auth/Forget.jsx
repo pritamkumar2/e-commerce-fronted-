@@ -41,9 +41,9 @@ export default function Forget() {
 
   return (
     <React.Fragment>
-      <form className="w-full" onSubmit={handleEmailSubmit}>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
+      <form className="w-full mobileSizeForm" onSubmit={handleEmailSubmit}>
+        <Grid container spacing={3} justifyContent="center" alignItems="center">
+          <Grid item xs={9}>
             <TextField
               required
               id="email"
@@ -55,7 +55,7 @@ export default function Forget() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={9}>
             <Button
               type="submit"
               variant="contained"
@@ -71,7 +71,7 @@ export default function Forget() {
       {otpSent && (
         <form className="w-full" onSubmit={handleOTPSubmit}>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
+            <Grid item xs={9}>
               <TextField
                 required
                 id="otp"
@@ -83,7 +83,7 @@ export default function Forget() {
                 onChange={(e) => setOTP(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={9}>
               <TextField
                 required
                 id="newPassword"
@@ -96,7 +96,7 @@ export default function Forget() {
                 onChange={(e) => setNewPassword(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={9}>
               <Button
                 type="submit"
                 variant="contained"

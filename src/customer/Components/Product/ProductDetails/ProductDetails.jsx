@@ -195,7 +195,7 @@ export default function ProductDetails() {
   };
 
   return (
-    <div className="bg-white lg:px-20">
+    <div className="bg-white gradient-background-product lg:px-20">
       <div className="pt-6 ">
         <nav aria-label="Breadcrumb">
           <ol
