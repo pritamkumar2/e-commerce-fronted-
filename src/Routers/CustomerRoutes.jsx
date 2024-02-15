@@ -23,6 +23,7 @@ import NotFound from "../Pages/Notfound";
 
 import SuccessPage from "../customer/Components/SuccessPage/SuccessPage";
 import CompanyPage from "../Pages/Company";
+import ScrollTop from "../customer/Components/ScrollEffect/ScrollTop";
 
 const CustomerRoutes = () => {
   const location = useLocation();
@@ -33,12 +34,12 @@ const CustomerRoutes = () => {
   // const path=["/","/home","/about","/privacy-policy","/terms-condition","/contact","/men",`/product/${productId}`]
   return (
     <div>
+    <ScrollTop/>
       <ThemeProvider theme={customerTheme}>
         {showNavigation && <Navigation />}
-        <div className="code ">
+        <div className="code">
           <Routes>
             <Route path="/login" element={<Homepage/>}></Route>
-          <Route path = "/sucess" element={<SuccessPage/>}></Route>
             <Route path="/register" element={<Homepage />}></Route>
             <Route path="/forget" element={<Homepage />}></Route>
 

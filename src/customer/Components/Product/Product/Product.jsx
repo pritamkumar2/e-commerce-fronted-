@@ -192,13 +192,13 @@ export default function Product() {
   }, [customersProduct.loading]);
 
   return (
-    <div className="bg-white -z-20  ">
+    <div className="bg-white -z-20 gradient-background-product ">
       <div>
         {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
           <Dialog
             as="div"
-            className="relative z-40 lg:hidden"
+            className="relative z-50 lg:hidden"
             onClose={setMobileFiltersOpen}
           >
             <Transition.Child
@@ -213,7 +213,7 @@ export default function Product() {
               <div className="fixed inset-0 bg-black bg-opacity-25" />
             </Transition.Child>
 
-            <div className="fixed inset-0 z-40 flex">
+            <div className="fixed filterIndex inset-0 z-50 flex">
               <Transition.Child
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
@@ -298,6 +298,74 @@ export default function Product() {
                                 ))}
                               </div>
                             </Disclosure.Panel>
+
+                            {singleFilter.map((section) => (
+                              <Disclosure
+                                // defaultOpen={true}
+                                as="div"
+                                key={section.id}
+                                className="border-b  border-gray-200 py-6"
+                              >
+                                {({ open }) => (
+                                  <>
+                                    <h3 className="-my-3 flow-root">
+                                      <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                                        <span className="font-medium text-gray-900">
+                                          {section.name}
+                                        </span>
+                                        <span className="ml-6 flex items-center">
+                                          {open ? (
+                                            <MinusIcon
+                                              className="h-5 w-5"
+                                              aria-hidden="true"
+                                            />
+                                          ) : (
+                                            <PlusIcon
+                                              className="h-5 w-5"
+                                              aria-hidden="true"
+                                            />
+                                          )}
+                                        </span>
+                                      </Disclosure.Button>
+                                    </h3>
+                                    <Disclosure.Panel className="pt-6">
+                                      <FormControl>
+                                        <RadioGroup
+                                          aria-labelledby="demo-radio-buttons-group-label"
+                                          defaultValue="female"
+                                          name="radio-buttons-group"
+                                        >
+                                          {section.options.map(
+                                            (option, optionIdx) => (
+                                              <FormControlLabel
+                                                value={option.value}
+                                                control={<Radio />}
+                                                label={option.label}
+                                                onChange={(e) =>
+                                                  handleRadioFilterChange(
+                                                    e,
+                                                    section.id
+                                                  )
+                                                }
+                                              />
+                                            )
+                                          )}
+                                        </RadioGroup>
+                                      </FormControl>
+                                    </Disclosure.Panel>
+                                  </>
+                                )}
+                              </Disclosure>
+                            ))}
+                            <div className="justify-center items-center flex my-5">
+                              <Button
+                                variant="contained"
+                                className="w-full"
+                                onClick={handleButtonClick}
+                              >
+                                All Products
+                              </Button>
+                            </div>
                           </>
                         )}
                       </Disclosure>

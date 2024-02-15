@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, register } from "../../../Redux/Auth/Action";
 import { Fragment, useEffect, useState } from "react";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function RegisterUserForm({ handleNext }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,10 +34,15 @@ export default function RegisterUserForm({ handleNext }) {
       email: data.get("email"),
       password: data.get("password"),
     };
-    console.log("user data", userData);
+  
     dispatch(register(userData));
   };
 
+  const handleRegistration = () => {
+    
+ 
+  
+  };
   return (
     <div className="auth">
       <form onSubmit={handleSubmit}>
@@ -90,6 +96,7 @@ export default function RegisterUserForm({ handleNext }) {
               variant="contained"
               size="large"
               sx={{ padding: ".8rem 0" }}
+              onClick={handleRegistration}
             >
               Register
             </Button>
@@ -110,15 +117,18 @@ export default function RegisterUserForm({ handleNext }) {
         </div>
       </div>
 
-      <Snackbar
-        open={openSnackBar}
-        autoHideDuration={6000}
-        onClose={handleClose}
-      >
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          {auth.error ? auth.error : auth.user ? "Register Success" : ""}
-        </Alert>
-      </Snackbar>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }

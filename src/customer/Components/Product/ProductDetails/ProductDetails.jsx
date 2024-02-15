@@ -1,18 +1,30 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { RadioGroup } from "@headlessui/react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import ProductReviewCard from "./ProductReviewCard";
-import { Box, Button, Grid, LinearProgress, Rating } from "@mui/material";
+
+import { Dialog, Transition } from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+
+import { deepPurple } from "@mui/material/colors";
+import { getUser, logout } from "../../../../Redux/Auth/Action";
+import AuthModal from "../../Auth/AuthModal";
+import {
+  Avatar,
+  Box,
+  Button,
+  Grid,
+  LinearProgress,
+  Rating,
+  Menu,
+  MenuItem,
+} from "@mui/material";
 import HomeProductCard from "../../Home/HomeProductCard";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { findProductById } from "../../../../Redux/Customers/Product/Action";
 import { addItemToCart } from "../../../../Redux/Customers/Cart/Action";
 import { getAllReviews } from "../../../../Redux/Customers/Review/Action";
-import { lengha_page1 } from "../../../../Data/Women/LenghaCholi";
-import { gounsPage1 } from "../../../../Data/Gouns/gouns";
 import axios from "axios";
-
 const product = {
   name: "Product",
   price: "₹996",
@@ -75,14 +87,21 @@ function classNames(...classes) {
 
 export default function ProductDetails() {
   const [activeImage, setActiveImage] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [showCustomAlert, setShowCustomAlert] = useState(false);
+  const [openUserMenu, setOpenUserMenu] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [openAuthModal, setOpenAuthModal] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { customersProduct, review } = useSelector((store) => store);
   const { productId } = useParams();
   const jwt = localStorage.getItem("jwt");
 
-  const [selectedSize, setSelectedSize] = useState();
-  const [showCustomAlert, setShowCustomAlert] = useState(false);
+  const { auth } = useSelector((store) => store);
+
+  const location = useLocation();
 
   const handleSubmit = () => {
     console.log("selectedSize", selectedSize);
@@ -139,6 +158,41 @@ export default function ProductDetails() {
     (product) =>
       product.category.name === customersProduct.product.category.name
   );
+
+  // ////////////////////////////////////////////////
+
+  useEffect(() => {
+    if (jwt) {
+      // dispatch(getUser(jwt));
+      // dispatch(getCart(jwt));
+    }
+  }, [jwt]);
+
+  const handleOpen = () => {
+    setOpenAuthModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenAuthModal(false);
+  };
+
+  const handleUserClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorEl(null);
+  };
+
+  const handleCloseUserMenuandprofile = () => {
+    navigate("/profile");
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    handleCloseUserMenu();
+    dispatch(logout());
+  };
 
   return (
     <div className="bg-white lg:px-20">
@@ -415,14 +469,67 @@ export default function ProductDetails() {
                     </Button>
                   </div>
                 )}
-
-                <Button
-                  variant="contained"
-                  type="submit"
-                  sx={{ padding: ".8rem 2rem", marginTop: "2rem" }}
-                >
-                  Add To Cart
-                </Button>
+                {auth.user ? (
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    sx={{ padding: ".8rem 2rem", marginTop: "2rem" }}
+                  >
+                    Add To Cart
+                  </Button>
+                ) : (
+                  <div>
+                    {auth.user ? (
+                      <div>
+                        <Avatar
+                          className="text-white"
+                          onClick={handleUserClick}
+                          aria-controls={open ? "basic-menu" : undefined}
+                          aria-haspopup="true"
+                          aria-expanded={open ? "true" : undefined}
+                          sx={{
+                            bgcolor: deepPurple[500],
+                            color: "white",
+                            cursor: "pointer",
+                          }}
+                        >
+                          {auth.user?.firstName[0].toUpperCase()}
+                        </Avatar>
+                        <Menu
+                          id="basic-menu"
+                          anchorEl={anchorEl}
+                          open={openUserMenu} // Use openUserMenu here
+                          onClose={handleCloseUserMenu}
+                          MenuListProps={{
+                            "aria-labelledby": "basic-button",
+                          }}
+                        >
+                          <MenuItem onClick={handleCloseUserMenuandprofile}>
+                            Profile
+                          </MenuItem>
+                          <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                        </Menu>
+                      </div>
+                    ) : (
+                      <Button
+                        variant="contained"
+                        sx={{
+                          padding: ".8rem 2rem",
+                          marginTop: "2rem",
+                          bgcolor: deepPurple[500],
+                          color: "white",
+                          cursor: "pointer",
+                          "&:hover": {
+                            bgcolor: deepPurple[700],
+                          },
+                        }}
+                        onClick={handleOpen}
+                      >
+                        Sign In to add cart
+                      </Button>
+                    )}
+                  </div>
+                )}
               </form>
             </div>
 
@@ -551,6 +658,7 @@ export default function ProductDetails() {
           </div>
         </section>
       </div>
+      <AuthModal open={openAuthModal} handleClose={handleClose} />
     </div>
   );
 }

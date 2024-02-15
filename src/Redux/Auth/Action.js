@@ -18,6 +18,8 @@ import {
   RESET_PASSWORD_SUCCESS,
   LOGOUT,
 } from "./ActionTypes";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import api, { API_BASE_URL } from "../../config/api";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -31,8 +33,23 @@ export const register = (userData) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/auth/signup`, userData);
     const user = response.data;
-
     // Check if the user is verified
+
+if(response.status === 200) {
+  toast.success(` ${response.data.message} vrefication mail sent successfully`, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+}
+
+
+
     if (user.isVerified) {
       // Store JWT token in localStorage
       if (user.jwt) localStorage.setItem("jwt", user.jwt);
@@ -44,6 +61,17 @@ export const register = (userData) => async (dispatch) => {
     }
   } catch (error) {
     dispatch(registerFailure(error.message));
+    console.log(error);
+    toast.error(`${error.response.data.error}`, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
 };
 
@@ -61,7 +89,18 @@ export const login = (userData) => async (dispatch) => {
     console.log("login ", user);
     dispatch(loginSuccess(user));
   } catch (error) {
+    console.log("error", error);
     dispatch(loginFailure(error.message));
+    toast.error("invalid credintials", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
 };
 
@@ -81,6 +120,16 @@ export const getUser = (token) => {
     } catch (error) {
       const errorMessage = error.message;
       dispatch({ type: GET_USER_FAILURE, payload: errorMessage });
+      toast.error(`${error.response.data.error}`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 };
@@ -111,6 +160,16 @@ export const sendOTP = (email) => async (dispatch) => {
     dispatch(sendOTPSuccess());
   } catch (error) {
     dispatch(sendOTPFailure(error.message));
+    toast.error(`${error.response.data.error}`, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
 };
 
@@ -128,5 +187,15 @@ export const verifyOTPAndUpdatePassword =
       const resetPasswordSuccess = () => ({ type: RESET_PASSWORD_SUCCESS });
     } catch (error) {
       dispatch(verifyOTPFailure(error.message));
+      toast.error(`${error.response.data.error}`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };

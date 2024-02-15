@@ -6,17 +6,15 @@ export const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          href: "/newArrival",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+          href: "/women/clothing/t-shirts?category=Shoes",
+          imageSrc: "https://i.imgur.com/OX1Dq8K.png",
           imageAlt:
             "Models sitting back to back, wearing Basic Tee in black and bone.",
         },
         {
           name: "Basic Tees",
-          href: "/",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          href: "/men/accessories/Watch?category=Watch",
+          imageSrc: "https://i.imgur.com/LCmS30E.png",
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
@@ -78,18 +76,18 @@ export const navigation = {
         {
           name: "New Arrivals",
           id: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+          href: "/women/clothing/t-shirts?category=Shoes",
+          imageSrc: "https://i.imgur.com/OX1Dq8K.png",
           imageAlt:
-            "Drawstring top with elastic loop closure and textured interior padding.",
+            "Models sitting back to back, wearing Basic Tee in black and bone.",
         },
         {
           name: "Artwork Tees",
           id: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg",
+          href: "/men/accessories/Watch?category=Watch",
+          imageSrc: "https://i.imgur.com/LCmS30E.png",
           imageAlt:
-            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
+            "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
       ],
       sections: [

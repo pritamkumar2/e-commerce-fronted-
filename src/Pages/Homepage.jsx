@@ -4,7 +4,7 @@ import { homeCarouselData } from "../customer/Components/Carousel/HomeCaroselDat
 import HomeProductSection from "../customer/Components/Home/HomeProductSection";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-
+import ProductShowCase from "../customer/Components/ProductShowCase/ProductShowCase";
 const Homepage = () => {
   const [products, setProducts] = useState([]);
   const [watches, setWatches] = useState([]);
@@ -30,7 +30,7 @@ const Homepage = () => {
         }
 
         setProducts(allProducts);
-  
+
         const menShoes = allProducts.filter(
           (product) => product.category.name === "Shoes"
         );
@@ -69,15 +69,22 @@ const Homepage = () => {
   }, []);
 
   return (
-    <div className="  mt-24 ">
+    <div className="gradient-background-home  mt-24 ">
       <HomeCarousel images={homeCarouselData} />
       <div className="space-y-10 py-20">
         {watches.length > 0 && (
           <HomeProductSection data={watches} section={"Men's Watches"} />
         )}
+
+        <div>
+          <ProductShowCase imageUrl="https://i.imgur.com/GlV4XUn.png" />
+        </div>
         {shoes.length > 0 && (
           <HomeProductSection data={shoes} section={"Men's Shoes"} />
         )}
+        <div>
+          <ProductShowCase imageUrl="https://i.imgur.com/BYWMtXQ.png" />
+        </div>
         {tshirts.length > 0 && (
           <HomeProductSection data={tshirts} section={"Men's T-shirts"} />
         )}

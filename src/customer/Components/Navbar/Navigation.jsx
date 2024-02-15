@@ -114,7 +114,6 @@ export default function Navigation() {
     product.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  console.log("king", filteredProducts);
   ///////////////////////////////////////
 
   const handleCloseUserMenuandprofile = (event) => {
@@ -195,7 +194,7 @@ export default function Navigation() {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+              <Dialog.Panel className="relative gradient-background-2 flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
                 <div className="flex px-4 pb-2 pt-5">
                   <button
                     type="button"
@@ -278,7 +277,7 @@ export default function Navigation() {
                               aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
                               className="mt-6 flex flex-col space-y-6"
                             >
-                               {section.items.map((item) => (
+                              {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
                                   <NavLink
                                     to={item.href}
@@ -287,10 +286,8 @@ export default function Navigation() {
                                     {item.name}
                                   </NavLink>
                                 </li>
-                              ))} 
-                              
+                              ))}
                             </ul>
-                            
                           </div>
                         ))}
                       </Tab.Panel>
@@ -311,7 +308,7 @@ export default function Navigation() {
                   ))}
                 </div>
 
-  <div>
+                <div>
                   {auth.user ? (
                     <div>
                       <Avatar
@@ -365,15 +362,14 @@ export default function Navigation() {
                     </Button>
                   )}
                 </div>
-              
               </Dialog.Panel>
             </Transition.Child>
           </div>
         </Dialog>
       </Transition.Root>
-      <header className="fixed  top-0 left-0 right-0 z-50 bg-[#ffffff] shadow-md">
+      <header className="fixed  top-0 left-0 right-0 z-50 gradient-background shadow-md">
         <p className="flex h-10 items-center justify-center bg-gradient-to-r from-indigo-600 via-purple-600 to-purple-700 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Get free delivery on orders over $100
+          Get free delivery on orders over 1000 ₹
         </p>
 
         <nav aria-label="Top" className="mx-auto ">
@@ -401,7 +397,7 @@ export default function Navigation() {
               </div>
 
               {/* Flyout menus */}
-              <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch z-10">
+              <Popover.Group className=" hidden lg:ml-8 lg:block lg:self-stretch z-10">
                 <div className="flex h-full space-x-8">
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
@@ -435,7 +431,7 @@ export default function Navigation() {
                                 aria-hidden="true"
                               />
 
-                              <div className="relative bg-white">
+                              <div className="relative gradient-background-2 bg-white">
                                 <div className="mx-auto max-w-7xl px-8">
                                   <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
                                     <div className="col-start-2 grid grid-cols-2 gap-x-8">
@@ -594,7 +590,7 @@ export default function Navigation() {
                     className="absolute inset-y-0 right-0 flex items-center px-4 focus:outline-none"
                     onClick={handleSearchIconClick}
                   >
-                    <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" />
+                    <MagnifyingGlassIcon className="h-5 w-5 text-gray-900" />
                   </button>
                   {isSearching && (
                     <form onSubmit={handleSearchSubmit}>
@@ -617,7 +613,7 @@ export default function Navigation() {
                     className="group -m-2 flex items-center p-2"
                   >
                     <ShoppingBagIcon
-                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      className="h-6 w-6 flex-shrink-0 text-gray-900 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">

@@ -2,13 +2,10 @@ import * as React from "react";
 import { Grid, TextField, Button, Snackbar, Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  sendOTP,
-  verifyOTPAndUpdatePassword,
-  login,
-} from "../../../Redux/Auth/Action";
-import { useEffect, useState } from "react";
-
+import { sendOTP, verifyOTPAndUpdatePassword, login } from "../../../Redux/Auth/Action";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function LoginUserForm({ handleNext }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -26,7 +23,6 @@ export default function LoginUserForm({ handleNext }) {
     dispatch(sendOTP(email));
     setOTPSent(true);
   };
-  console.log(email, otp, password);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -34,9 +30,9 @@ export default function LoginUserForm({ handleNext }) {
   };
 
   return (
-    <React.Fragment className=" auth shadow-lg ">
-           <form className="w-full ">
-        <Grid container spacing={3}>
+    <React.Fragment>
+      <form className="w-full">
+        <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
               required
@@ -45,43 +41,42 @@ export default function LoginUserForm({ handleNext }) {
               label="Email"
               fullWidth
               autoComplete="given-name"
+              size="small"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </Grid>
 
           {!otpSent ? (
-            <div className="auth  my-2">
+            <Grid item xs={12}>
               <Button
-                className="bg-[#9155FD]  w-full"
+                className="bg-[#9155FD] w-full"
                 type="button"
                 variant="contained"
-                size="large"
-                sx={{ padding: ".8rem 0", width: "100%" }}
+                size="small"
                 onClick={handleGenerateOTP}
               >
                 Get OTP
               </Button>
-            </div>
+            </Grid>
           ) : (
-            <div className=" flex flex-row  my-3  w-full  justify-around">
-              <div className=" w-full">
-                <TextField
-                  required
-                  id="otp"
-                  name="otp"
-                  className=" w-full "
-                  label="OTP"
-                  fullWidth
-                  autoComplete="off"
-                  value={otp}
-                  onChange={(e) => setOTP(e.target.value)}
-                />
-              </div>
-            </div>
+            <Grid item xs={12}>
+              <TextField
+                required
+                id="otp"
+                name="otp"
+                label="OTP"
+                fullWidth
+                autoComplete="off"
+                size="small"
+                value={otp}
+                onChange={(e) => setOTP(e.target.value)}
+              />
+            </Grid>
           )}
+
           {otpSent && (
-            <div className=" mb-2">
+            <Grid item xs={12}>
               <TextField
                 required
                 id="password"
@@ -90,61 +85,56 @@ export default function LoginUserForm({ handleNext }) {
                 fullWidth
                 autoComplete="given-name"
                 type="password"
+                size="small"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </div>
+            </Grid>
           )}
+
           {otpSent && (
-            <div item xs={12}>
+            <Grid item xs={12}>
               <Button
-                className="bg-[#9155FD]  w-full"
+                className="bg-[#9155FD] w-full"
                 type="button"
                 variant="contained"
-                size="large"
-                sx={{ padding: ".8rem 0", width: "100%" }}
+                size="small"
                 onClick={handleLogin}
               >
                 Login
               </Button>
-            </div>
+            </Grid>
           )}
         </Grid>
       </form>
-      <div className="flex justify-center flex-col items-center">
-        <div className="py-3 flex items-center">
+
+      <div className="flex justify-center flex-col items-center mt-4">
+        <div className="py-2 flex items-center">
           <p className="m-0 p-0">Don't have an account?</p>
-          <Button
-            onClick={() => navigate("/register")}
-            className="ml-5"
-            size="small"
-          >
+          <Button onClick={() => navigate("/register")} className="ml-2" size="small">
             Register
           </Button>
         </div>
-        <div className="py-3 flex items-center">
-          <Button
-            onClick={() => navigate("/forget")}
-            className="ml-5"
-            size="small"
-          >
+        <div className="py-2 flex items-center">
+          <Button onClick={() => navigate("/forget")} className="ml-2" size="small">
             Forget Password
           </Button>
         </div>
       </div>
-      <Snackbar
-        open={openSnackBar}
-        autoHideDuration={6000}
-        onClose={handleCloseSnackbar}
-      >
-        <Alert
-          onClose={handleCloseSnackbar}
-          severity="success"
-          sx={{ width: "100%" }}
-        >
-          {auth.error ? auth.error : auth.user ? "Login Success" : ""}
-        </Alert>
-      </Snackbar>
+
+      
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </React.Fragment>
   );
 }
