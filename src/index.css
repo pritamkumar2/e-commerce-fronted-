@@ -89,7 +89,7 @@ code {
 }
 
 .code {
-  margin-top: 7%; /* Default margin-top value for PC */
+  margin-top: 9%; /* Default margin-top value for PC */
 }
 
 @media (max-width: 768px) {
