@@ -133,7 +133,9 @@ export default function ProductDetails() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://e-commerce-bakend.onrender.com/api/products");
+        const response = await axios.get(
+          "https://mellow-seahorse-fa8091.netlify.app/api/products"
+        );
 
         setData(response.data.content);
       } catch (error) {
@@ -153,7 +155,6 @@ export default function ProductDetails() {
       return () => clearTimeout(timeoutId);
     }
   }, [showCustomAlert]);
-
   const similer = watch.filter(
     (product) =>
       product.category.name === customersProduct.product.category.name
